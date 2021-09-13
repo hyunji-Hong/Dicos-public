@@ -13,8 +13,19 @@ Principles and experimental results are discussed in [our paper](https://github.
 * ***Python 3***
 * ***[Universal-ctags](https://github.com/universal-ctags/ctags)***: for function parsing.
 * ***[Joern](https://github.com/joernio/joern)***: for generate code property graph. (only applied in C/C++) 
+* ***[cpgqls-client](https://github.com/ShiftLeftSecurity/cpgqls-client-python)***: for communicating with an instance of a Code Property Graph server. (only applied in C/C++) 
 
-<!-- How to run Joern: -->
+  * How to install cpgqls-client:
+    ```
+    pip3 install cpgqls-client
+    ```
+  * How to setting Joern server:
+    * Installation: refer to [Joern document](https://docs.joern.io/installation)
+    * After following the installer instructions, by default, joern will be installed at `~/bin/joern`.
+    * Create a sh file in `~/bin/joern/joern-cli`. (filename: `joern_running.sh`)
+        ```
+        ./joern --server
+        ```
 
 Our utilized versions: Python 3.9.1, and universal-ctags p5.9.20210620.0 on Ubuntu 18.04.
 
@@ -72,14 +83,20 @@ Our utilized versions: Python 3.9.1, and universal-ctags p5.9.20210620.0 on Ubun
  ```
  python3 Post_Analyzer.py
  ```
- - Check the results (description based on the default paths).
+
+
+#### 2-2. Discovering Insecure posts - using Joern Parser (src/Post_Analyzer_usingJoern.py)
+ -  Execute [Post_Analyzer_usingJoern.py](https://github.com/hyunji-Hong/Dicos-public/blob/main/src/Post_Analyzer_usingJoern.py).
+  ```
+ python3 Post_Analyzer_usingJoern.py
+ ```
+ -  Specify the path regarding Joern to suit the users. (Please change the global variables)
+
+#### Check the results (description based on the default paths).
    * ***./ouput/***: Directory for storing results.
    * ***./ouput/insecure_posts.txt***: List of insecure post IDs. (two or more features detected.)
    * ***./ouput/Analyzing_codesnippet.json***: Result of the code snippets analysis.
    * ***./ouput/Analyzing_keyword.json***: Result of the post descriptions and comments analysis.
-
-#### 2-2. Discovering Insecure posts - using Joern Parser (src/)
- - _Code refactoring is in progress. It will be uploaded soon._
   
 ### About
 This repository is authored and maintained by Hyunji Hong.
